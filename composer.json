@@ -1,15 +1,15 @@
 {
-    "name": "zvizvi/filament-relation-manager-repeatable",
-    "description": "This is my package filament-relation-manager-repeatable",
+    "name": "zvizvi/relation-manager-repeatable",
+    "description": "This is my package relation-manager-repeatable",
     "keywords": [
         "zvizvi",
         "laravel",
-        "filament-relation-manager-repeatable"
+        "relation-manager-repeatable"
     ],
-    "homepage": "https://github.com/zvizvi/filament-relation-manager-repeatable",
+    "homepage": "https://github.com/zvizvi/relation-manager-repeatable",
     "support": {
-        "issues": "https://github.com/zvizvi/filament-relation-manager-repeatable/issues",
-        "source": "https://github.com/zvizvi/filament-relation-manager-repeatable"
+        "issues": "https://github.com/zvizvi/relation-manager-repeatable/issues",
+        "source": "https://github.com/zvizvi/relation-manager-repeatable"
     },
     "license": "MIT",
     "authors": [
@@ -29,8 +29,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Zvizvi\\FilamentRelationManagerRepeatable\\": "src/",
-            "Zvizvi\\FilamentRelationManagerRepeatable\\Database\\Factories\\": "database/factories/"
+            "Zvizvi\\RelationManagerRepeatable\\": "src/",
+            "Zvizvi\\RelationManagerRepeatable\\Database\\Factories\\": "database/factories/"
         }
     },
     "config": {
@@ -39,10 +39,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Zvizvi\\FilamentRelationManagerRepeatable\\FilamentRelationManagerRepeatableServiceProvider"
+                "Zvizvi\\RelationManagerRepeatable\\RelationManagerRepeatableServiceProvider"
             ],
             "aliases": {
-                "FilamentRelationManagerRepeatable": "Zvizvi\\FilamentRelationManagerRepeatable\\Facades\\FilamentRelationManagerRepeatable"
+                "RelationManagerRepeatable": "Zvizvi\\RelationManagerRepeatable\\Facades\\RelationManagerRepeatable"
             }
         }
     },

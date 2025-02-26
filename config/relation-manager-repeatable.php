@@ -1,6 +1,6 @@
 <?php
 
-// config for Zvizvi/FilamentRelationManagerRepeatable
+// config for Zvizvi/RelationManagerRepeatable
 return [
 
 ];
