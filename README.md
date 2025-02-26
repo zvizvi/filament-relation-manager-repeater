@@ -1,77 +1,101 @@
-# This is my package relation-manager-repeatable
+# Filament Relation Manager Repeatable
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/zvizvi/relation-manager-repeatable.svg?style=flat-square)](https://packagist.org/packages/zvizvi/relation-manager-repeatable)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/zvizvi/relation-manager-repeatable/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/zvizvi/relation-manager-repeatable/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/zvizvi/relation-manager-repeatable/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/zvizvi/relation-manager-repeatable/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/zvizvi/relation-manager-repeatable.svg?style=flat-square)](https://packagist.org/packages/zvizvi/relation-manager-repeatable)
 
-
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+A Filament plugin that adds a repeatable interface for editing relationship records in Filament's relation managers.  
+This plugin allows you to edit multiple related records at once using a repeatable component.
 
 ## Installation
-
-You can install the package via composer:
 
 ```bash
 composer require zvizvi/relation-manager-repeatable
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="relation-manager-repeatable-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="relation-manager-repeatable-config"
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="relation-manager-repeatable-views"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
 ## Usage
 
+Add the `RelationManagerRepeatableAction` to your relation manager's table actions:
+
 ```php
-$relationManagerRepeatable = new Zvizvi\RelationManagerRepeatable();
-echo $relationManagerRepeatable->echoPhrase('Hello, Zvizvi!');
+use Zvizvi\RelationManagerRepeatable\Tables\RelationManagerRepeatableAction;
+
+class PostsRelationManager extends RelationManager
+{
+    protected static string $relationship = 'posts';
+
+    public function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                //
+            ])
+            ->headerActions([
+                RelationManagerRepeatableAction::make(),
+            ]);
+    }
+}
 ```
 
-## Testing
+## Advanced Configuration
 
-```bash
-composer test
+Since `RelationManagerRepeatableAction` extends Filament's Action class, all standard Action configurations are available (label, modalWidth, modalHeading, icon, color, etc.).
+
+You can also customize the repeater component using the `configureRepeater` method. All standard Filament repeater options are available (reorderable, collapsible, cloneable, grid, itemLabel, etc.):
+
+```php
+use Filament\Forms\Components\Repeater;
+
+public function table(Table $table): Table
+{
+    return $table
+        ->columns([
+            //
+        ])
+        ->headerActions([
+            RelationManagerRepeatableAction::make()
+                ->modalWidth('5xl')
+                ->modalHeading('Edit Related Records')
+                ->configureRepeater(function (Repeater $repeater) {
+                    return $repeater
+                        ->reorderable()
+                        ->collapsible()
+                        ->cloneable()
+                        ->defaultItems(0)
+                        ->maxItems(5);
+                }),
+        ]);
+}
 ```
 
-## Changelog
+## Form Customization
 
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+By default, the repeater uses the form schema defined in your relation manager. You can customize which fields are displayed in the repeater by providing a custom schema:
 
-## Contributing
+```php
+RelationManagerRepeatableAction::make()
+    ->configureRepeater(function (Repeater $repeater) {
+        return $repeater
+            ->schema([
+                // Only include specific fields
+                TextInput::make('title'),
+                TextInput::make('slug'),
+                Toggle::make('is_published'),
+                // Other fields...
+            ]);
+    }),
+```
 
-Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
+This allows you to display only a subset of fields from your relation manager's form, or even add custom fields specifically for the repeater interface.
 
-## Security Vulnerabilities
+## How It Works
 
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+The plugin creates a modal with a repeater component that loads all related records. When you save the form:
 
-## Credits
+1. It deletes all existing related records
+2. Creates new records based on the data in the repeater
+3. Shows a success notification
 
-- [zvizvi](https://github.com/zvizvi)
-- [All Contributors](../../contributors)
+This approach provides a clean interface for managing multiple related records at once.
 
 ## License
 
