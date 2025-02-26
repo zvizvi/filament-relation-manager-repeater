@@ -1,6 +1,6 @@
 <?php
 
-namespace Zvizvi\RelationManagerRepeatable\Tables\Actions;
+namespace Zvizvi\RelationManagerRepeatable\Tables;
 
 use Closure;
 use Filament\Forms\Components\Repeater;
