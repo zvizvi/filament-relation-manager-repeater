@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace Zvizvi\FilamentRelationManagerRepeatable;
 
 use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\Asset;
@@ -13,14 +13,14 @@ use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
-use VendorName\Skeleton\Testing\TestsSkeleton;
+use Zvizvi\FilamentRelationManagerRepeatable\Commands\FilamentRelationManagerRepeatableCommand;
+use Zvizvi\FilamentRelationManagerRepeatable\Testing\TestsFilamentRelationManagerRepeatable;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class FilamentRelationManagerRepeatableServiceProvider extends PackageServiceProvider
 {
-    public static string $name = 'skeleton';
+    public static string $name = 'filament-relation-manager-repeatable';
 
-    public static string $viewNamespace = 'skeleton';
+    public static string $viewNamespace = 'filament-relation-manager-repeatable';
 
     public function configurePackage(Package $package): void
     {
@@ -36,7 +36,7 @@ class SkeletonServiceProvider extends PackageServiceProvider
                     ->publishConfigFile()
                     ->publishMigrations()
                     ->askToRunMigrations()
-                    ->askToStarRepoOnGitHub(':vendor_slug/:package_slug');
+                    ->askToStarRepoOnGitHub('zvizvi/filament-relation-manager-repeatable');
             });
 
         $configFileName = $package->shortName();
@@ -80,18 +80,18 @@ class SkeletonServiceProvider extends PackageServiceProvider
         if (app()->runningInConsole()) {
             foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
                 $this->publishes([
-                    $file->getRealPath() => base_path("stubs/skeleton/{$file->getFilename()}"),
-                ], 'skeleton-stubs');
+                    $file->getRealPath() => base_path("stubs/filament-relation-manager-repeatable/{$file->getFilename()}"),
+                ], 'filament-relation-manager-repeatable-stubs');
             }
         }
 
         // Testing
-        Testable::mixin(new TestsSkeleton);
+        Testable::mixin(new TestsFilamentRelationManagerRepeatable);
     }
 
     protected function getAssetPackageName(): ?string
     {
-        return ':vendor_slug/:package_slug';
+        return 'zvizvi/filament-relation-manager-repeatable';
     }
 
     /**
@@ -100,9 +100,9 @@ class SkeletonServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            // AlpineComponent::make('skeleton', __DIR__ . '/../resources/dist/components/skeleton.js'),
-            Css::make('skeleton-styles', __DIR__ . '/../resources/dist/skeleton.css'),
-            Js::make('skeleton-scripts', __DIR__ . '/../resources/dist/skeleton.js'),
+            // AlpineComponent::make('filament-relation-manager-repeatable', __DIR__ . '/../resources/dist/components/filament-relation-manager-repeatable.js'),
+            Css::make('filament-relation-manager-repeatable-styles', __DIR__ . '/../resources/dist/filament-relation-manager-repeatable.css'),
+            Js::make('filament-relation-manager-repeatable-scripts', __DIR__ . '/../resources/dist/filament-relation-manager-repeatable.js'),
         ];
     }
 
@@ -112,7 +112,7 @@ class SkeletonServiceProvider extends PackageServiceProvider
     protected function getCommands(): array
     {
         return [
-            SkeletonCommand::class,
+            FilamentRelationManagerRepeatableCommand::class,
         ];
     }
 
@@ -146,7 +146,7 @@ class SkeletonServiceProvider extends PackageServiceProvider
     protected function getMigrations(): array
     {
         return [
-            'create_skeleton_table',
+            'create_filament-relation-manager-repeatable_table',
         ];
     }
 }

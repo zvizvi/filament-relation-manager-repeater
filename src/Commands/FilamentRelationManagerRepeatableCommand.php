@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Zvizvi\FilamentRelationManagerRepeatable\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class FilamentRelationManagerRepeatableCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'filament-relation-manager-repeatable';
 
     public $description = 'My command';
 
