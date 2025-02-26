@@ -149,9 +149,20 @@ class RelationManagerRepeaterAction extends Action
     {
         return function (array $data, RelationManager $livewire): void {
             $relationshipName = $livewire->getRelationshipName();
-            $ownerRecord = $livewire->getOwnerRecord();
-            $ownerRecord->{$relationshipName}()->delete();
-            $ownerRecord->{$relationshipName}()->createMany($data[$relationshipName]);
+            $relationship = $livewire->getOwnerRecord()->{$relationshipName}();
+            $newData = collect($data[$relationshipName]);
+
+            // Delete removed records
+            $relationship->whereNotIn('id', $newData->pluck('id')->filter())->delete();
+
+            // Update or create records
+            foreach ($newData as $item) {
+                if (!empty($item['id'])) {
+                    $relationship->where('id', $item['id'])->update(collect($item)->except('id')->toArray());
+                } else {
+                    $relationship->create(collect($item)->except('id')->toArray());
+                }
+            }
 
             Notification::make()
                 ->title(__('filament-panels::resources/pages/edit-record.notifications.saved.title'))
