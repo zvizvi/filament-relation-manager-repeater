@@ -1,15 +1,15 @@
 {
-    "name": "zvizvi/relation-manager-repeatable",
-    "description": "This is my package relation-manager-repeatable",
+    "name": "zvizvi/relation-manager-repeater",
+    "description": "This is my package relation-manager-repeater",
     "keywords": [
         "zvizvi",
         "laravel",
-        "relation-manager-repeatable"
+        "relation-manager-repeater"
     ],
-    "homepage": "https://github.com/zvizvi/relation-manager-repeatable",
+    "homepage": "https://github.com/zvizvi/relation-manager-repeater",
     "support": {
-        "issues": "https://github.com/zvizvi/relation-manager-repeatable/issues",
-        "source": "https://github.com/zvizvi/relation-manager-repeatable"
+        "issues": "https://github.com/zvizvi/relation-manager-repeater/issues",
+        "source": "https://github.com/zvizvi/relation-manager-repeater"
     },
     "license": "MIT",
     "authors": [
@@ -29,8 +29,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Zvizvi\\RelationManagerRepeatable\\": "src/",
-            "Zvizvi\\RelationManagerRepeatable\\Database\\Factories\\": "database/factories/"
+            "Zvizvi\\RelationManagerRepeater\\": "src/",
+            "Zvizvi\\RelationManagerRepeater\\Database\\Factories\\": "database/factories/"
         }
     },
     "config": {
@@ -39,10 +39,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Zvizvi\\RelationManagerRepeatable\\RelationManagerRepeatableServiceProvider"
+                "Zvizvi\\RelationManagerRepeater\\RelationManagerRepeaterServiceProvider"
             ],
             "aliases": {
-                "RelationManagerRepeatable": "Zvizvi\\RelationManagerRepeatable\\Facades\\RelationManagerRepeatable"
+                "RelationManagerRepeater": "Zvizvi\\RelationManagerRepeater\\Facades\\RelationManagerRepeater"
             }
         }
     },

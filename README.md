@@ -1,23 +1,23 @@
-# Filament Relation Manager Repeatable
+# Filament Relation Manager Repeater
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/zvizvi/relation-manager-repeatable.svg?style=flat-square)](https://packagist.org/packages/zvizvi/relation-manager-repeatable)
-[![Total Downloads](https://img.shields.io/packagist/dt/zvizvi/relation-manager-repeatable.svg?style=flat-square)](https://packagist.org/packages/zvizvi/relation-manager-repeatable)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/zvizvi/relation-manager-repeater.svg?style=flat-square)](https://packagist.org/packages/zvizvi/relation-manager-repeater)
+[![Total Downloads](https://img.shields.io/packagist/dt/zvizvi/relation-manager-repeater.svg?style=flat-square)](https://packagist.org/packages/zvizvi/relation-manager-repeater)
 
-A Filament plugin that adds a repeatable interface for editing relationship records in Filament's relation managers.  
-This plugin allows you to edit multiple related records at once using a repeatable component.
+A Filament plugin that adds a Repeater form interface for editing relationship records in Filament's relation managers.  
+This plugin allows you to edit multiple related records at once using a repeater component.
 
 ## Installation
 
 ```bash
-composer require zvizvi/relation-manager-repeatable
+composer require zvizvi/relation-manager-repeater
 ```
 
 ## Usage
 
-Add the `RelationManagerRepeatableAction` to your relation manager's table actions:
+Add the `RelationManagerRepeaterAction` to your relation manager's table actions:
 
 ```php
-use Zvizvi\RelationManagerRepeatable\Tables\RelationManagerRepeatableAction;
+use Zvizvi\RelationManagerRepeater\Tables\RelationManagerRepeaterAction;
 
 class PostsRelationManager extends RelationManager
 {
@@ -30,7 +30,7 @@ class PostsRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
-                RelationManagerRepeatableAction::make(),
+                RelationManagerRepeaterAction::make(),
             ]);
     }
 }
@@ -38,7 +38,7 @@ class PostsRelationManager extends RelationManager
 
 ## Advanced Configuration
 
-Since `RelationManagerRepeatableAction` extends Filament's Action class, all standard Action configurations are available (label, modalWidth, modalHeading, icon, color, etc.).
+Since `RelationManagerRepeaterAction` extends Filament's Action class, all standard Action configurations are available (label, modalWidth, modalHeading, icon, color, etc.).
 
 You can also customize the repeater component using the `configureRepeater` method. All standard Filament repeater options are available (reorderable, collapsible, cloneable, grid, itemLabel, etc.):
 
@@ -52,7 +52,7 @@ public function table(Table $table): Table
             //
         ])
         ->headerActions([
-            RelationManagerRepeatableAction::make()
+            RelationManagerRepeaterAction::make()
                 ->modalWidth('5xl')
                 ->modalHeading('Edit Related Records')
                 ->configureRepeater(function (Repeater $repeater) {
@@ -72,7 +72,7 @@ public function table(Table $table): Table
 By default, the repeater uses the form schema defined in your relation manager. You can customize which fields are displayed in the repeater by providing a custom schema:
 
 ```php
-RelationManagerRepeatableAction::make()
+RelationManagerRepeaterAction::make()
     ->configureRepeater(function (Repeater $repeater) {
         return $repeater
             ->schema([

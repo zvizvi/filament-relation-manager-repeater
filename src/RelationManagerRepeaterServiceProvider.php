@@ -1,16 +1,16 @@
 <?php
 
-namespace Zvizvi\RelationManagerRepeatable;
+namespace Zvizvi\RelationManagerRepeater;
 
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class RelationManagerRepeatableServiceProvider extends PackageServiceProvider
+class RelationManagerRepeaterServiceProvider extends PackageServiceProvider
 {
-    public static string $name = 'relation-manager-repeatable';
+    public static string $name = 'relation-manager-repeater';
 
-    public static string $viewNamespace = 'relation-manager-repeatable';
+    public static string $viewNamespace = 'relation-manager-repeater';
 
     public function configurePackage(Package $package): void
     {

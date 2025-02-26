@@ -1,6 +1,6 @@
 <?php
 
-namespace Zvizvi\RelationManagerRepeatable\Tables;
+namespace Zvizvi\RelationManagerRepeater\Tables;
 
 use Closure;
 use Filament\Forms\Components\Repeater;
@@ -17,7 +17,7 @@ use ReflectionClass;
  * This action creates a repeater interface for editing multiple related records at once.
  * It can be customized with a schema and additional repeater configurations.
  */
-class RelationManagerRepeatableAction extends Action
+class RelationManagerRepeaterAction extends Action
 {
     /**
      * Optional closure to configure the repeater component
