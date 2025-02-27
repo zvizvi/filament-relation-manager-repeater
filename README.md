@@ -101,9 +101,11 @@ This approach provides a clean interface for managing multiple related records a
 
 ## Screenshots
 
-<img alt="image" src="https://github.com/user-attachments/assets/152f5946-4269-4d57-bc63-f7ede49d1bad" />
+- _Relation manager action button:_  
+<img alt="Relation manager action button" src="https://github.com/user-attachments/assets/152f5946-4269-4d57-bc63-f7ede49d1bad" />
 
-<img alt="image" src="https://github.com/user-attachments/assets/155fb063-aacd-49b5-8aec-22099c88bf26" />
+- _Action form editor:_  
+<img alt="Action form editor" src="https://github.com/user-attachments/assets/155fb063-aacd-49b5-8aec-22099c88bf26" />
 
 ## License
 
