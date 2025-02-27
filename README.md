@@ -91,9 +91,11 @@ This allows you to display only a subset of fields from your relation manager's 
 
 The plugin creates a modal with a repeater component that loads all related records. When you save the form:
 
-1. It deletes all existing related records
-2. Creates new records based on the data in the repeater
-3. Shows a success notification
+- For each record, it determines whether to:
+   - Delete records that are no longer present
+   - Update existing records with new data
+   - Create new records that were added
+- Shows a success notification
 
 This approach provides a clean interface for managing multiple related records at once.
 
