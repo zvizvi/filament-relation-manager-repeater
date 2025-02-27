@@ -99,6 +99,12 @@ The plugin creates a modal with a repeater component that loads all related reco
 
 This approach provides a clean interface for managing multiple related records at once.
 
+## Screenshots
+
+<img alt="image" src="https://github.com/user-attachments/assets/152f5946-4269-4d57-bc63-f7ede49d1bad" />
+
+<img alt="image" src="https://github.com/user-attachments/assets/155fb063-aacd-49b5-8aec-22099c88bf26" />
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
