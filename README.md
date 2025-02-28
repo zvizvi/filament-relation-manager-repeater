@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/036c25c9-cebf-420c-a13f-7d785720ec40)
+![image](https://raw.githubusercontent.com/zvizvi/filament-relation-manager-repeater/main/.github/banner.jpg)
 
 # Filament Relation Manager Repeater
 
