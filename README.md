@@ -1,4 +1,8 @@
-![image](https://raw.githubusercontent.com/zvizvi/filament-relation-manager-repeater/main/.github/banner.jpg)
+<a href="https://github.com/zvizvi/filament-relation-manager-repeater" class="filament-hidden">
+
+![Filament Relation Manager Repeater](https://raw.githubusercontent.com/zvizvi/filament-relation-manager-repeater/main/.github/banner.jpg)
+
+</a>
 
 # Filament Relation Manager Repeater
 
