@@ -158,7 +158,10 @@ class RelationManagerRepeaterAction extends Action
             // Update or create records
             foreach ($newData as $item) {
                 if (!empty($item['id'])) {
-                    $relationship->where('id', $item['id'])->update(collect($item)->except('id')->toArray());
+                    if ($record = $relationship->getModel()->find($item['id'])) {
+                        $data = collect($item)->except('id');
+                        $record->fill($data->toArray())->save();
+                    }
                 } else {
                     $relationship->create(collect($item)->except('id')->toArray());
                 }
