@@ -3,11 +3,11 @@
 namespace Zvizvi\RelationManagerRepeater\Tables;
 
 use Closure;
+use Filament\Actions\Action;
 use Filament\Forms\Components\Repeater;
-use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Tables\Actions\Action;
+use Filament\Schemas\Schema;
 use Illuminate\Support\Str;
 use ReflectionClass;
 
@@ -60,7 +60,7 @@ class RelationManagerRepeaterAction extends Action
         return $this
             ->label($this->getLabelCallback())
             ->fillForm($this->getFillFormCallback())
-            ->form($this->getFormCallback())
+            ->schema($this->getFormSchemaCallback())
             ->modalSubmitActionLabel(__('filament-panels::resources/pages/edit-record.form.actions.save.label'))
             ->action($this->getActionCallback())
             ->hidden(fn(RelationManager $livewire): bool => $livewire->isReadOnly());
@@ -84,16 +84,16 @@ class RelationManagerRepeaterAction extends Action
      *
      * @return Closure
      */
-    protected function getFormCallback(): Closure
+    protected function getFormSchemaCallback(): Closure
     {
-        return function (Form $form, RelationManager $livewire): Form {
+        return function (Schema $schema, RelationManager $livewire): Schema {
             $relationshipName = $livewire->getRelationshipName();
             $pluralModelLabel = self::getRelationManagerPluralLabel($livewire);
-            $formInstance = $livewire->form($form);
+            $schema = $livewire->form($schema);
 
-            $repeater = $this->buildRepeater($relationshipName, $pluralModelLabel, $formInstance);
+            $repeater = $this->buildRepeater($relationshipName, $pluralModelLabel, $schema);
 
-            return $formInstance->schema([$repeater]);
+            return $schema->schema([$repeater]);
         };
     }
 
@@ -102,16 +102,16 @@ class RelationManagerRepeaterAction extends Action
      *
      * @param string $relationshipName The name of the relationship
      * @param string $pluralModelLabel The plural label for the model
-     * @param Form $formInstance The form instance
+     * @param Schema $schema The schema for the repeater
      * @return Repeater
      */
-    protected function buildRepeater(string $relationshipName, string $pluralModelLabel, Form $formInstance): Repeater
+    protected function buildRepeater(string $relationshipName, string $pluralModelLabel, Schema $schema): Repeater
     {
         $repeater = Repeater::make($relationshipName)
             ->label($pluralModelLabel)
             ->reorderable(false)
-            ->schema($formInstance->getComponents())
-            ->columns(columns: $formInstance->getColumns())
+            ->schema($schema->getComponents())
+            ->columns(columns: $schema->getColumns())
             ->columnSpanFull()
             ->defaultItems(1);
 
