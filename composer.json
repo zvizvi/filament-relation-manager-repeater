@@ -1,6 +1,6 @@
 {
     "name": "zvizvi/relation-manager-repeater",
-    "description": "Filament plugin that adds a Repeater form interface for editing relationship records in Filament's relation managers",
+    "description": "A Filament plugin that enhances Relation Managers by providing a Repeater interface, enabling efficient inline editing and management of associated records",
     "keywords": [
         "zvizvi",
         "laravel",

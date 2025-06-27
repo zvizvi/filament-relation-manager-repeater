@@ -9,8 +9,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/zvizvi/relation-manager-repeater.svg?style=flat-square)](https://packagist.org/packages/zvizvi/relation-manager-repeater)
 [![Total Downloads](https://img.shields.io/packagist/dt/zvizvi/relation-manager-repeater.svg?style=flat-square)](https://packagist.org/packages/zvizvi/relation-manager-repeater)
 
-A Filament plugin that adds a Repeater form interface for editing relationship records in Filament's relation managers.  
-This plugin allows you to edit multiple related records at once using a repeater component.
+A Filament plugin that enhances Relation Managers by providing a Repeater interface, enabling efficient inline editing and management of associated records.
 
 ## Version Compatibility
 
