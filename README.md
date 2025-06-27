@@ -12,6 +12,11 @@
 A Filament plugin that adds a Repeater form interface for editing relationship records in Filament's relation managers.  
 This plugin allows you to edit multiple related records at once using a repeater component.
 
+## Version Compatibility
+
+- Version 1.x is compatible with Filament 3
+- Version 2.x and above is compatible with Filament 4
+
 ## Installation
 
 ```bash
