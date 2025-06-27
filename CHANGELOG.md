@@ -2,7 +2,13 @@
 
 All notable changes to `relation-manager-repeater` will be documented in this file.
 
-## 1.02 - 2025-06-27
+## 2.0.0 - 2025-06-27
+
+### Add compatibility with FIlament v4
+
+**Full Changelog**: https://github.com/zvizvi/filament-relation-manager-repeater/compare/1.0.2...2.0.0
+
+## 1.0.2 - 2025-06-27
 
 **Full Changelog**: https://github.com/zvizvi/filament-relation-manager-repeater/compare/1.0.1...1.0.2
 
