@@ -182,25 +182,19 @@ class RelationManagerRepeaterAction extends Action
      */
     private static function getRelationManagerPluralLabel(RelationManager $relationManager): string
     {
-        static $cache = [];
-
         $relationManagerClass = get_class($relationManager);
-
-        if (isset($cache[$relationManagerClass])) {
-            return $cache[$relationManagerClass];
-        }
 
         $relationshipName = $relationManager->getRelationshipName();
         $pluralRelationshipName = Str::plural($relationshipName);
 
         try {
             $reflection = new ReflectionClass($relationManagerClass);
-            $pluralModelLabel = $reflection->getStaticPropertyValue('pluralModelLabel', $pluralRelationshipName) ?? $pluralRelationshipName;
+            $pluralModelLabel = $reflection->getMethod('getPluralModelLabel')->invoke($relationManager) ??
+                $reflection->getMethod('getTitle')->invoke($relationManager, $relationManager->getOwnerRecord(), $pluralRelationshipName) ??
+                $pluralRelationshipName;
         } catch (\Exception $e) {
             $pluralModelLabel = $pluralRelationshipName;
         }
-
-        $cache[$relationManagerClass] = $pluralModelLabel;
 
         return $pluralModelLabel;
     }
